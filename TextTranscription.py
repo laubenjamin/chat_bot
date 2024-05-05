@@ -1,5 +1,3 @@
-# pip3 install speechmatics-python
-
 import os
 import requests
 
