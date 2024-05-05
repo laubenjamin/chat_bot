@@ -18,7 +18,7 @@ from langchain_core.runnables.history import RunnableWithMessageHistory
 ###############################################################################
 
 class ai_chat:
-    def __init__(self, url, place, language, ai_role, user_role, session_id):
+    def __init__(self, url, language, place="coffe shop", ai_role="a barista", user_role="a customer", session_id="abc123"):
         load_dotenv()
 
         OCTOAI_API_TOKEN = os.environ["OCTOAI_API_TOKEN"]
