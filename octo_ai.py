@@ -19,7 +19,7 @@ from langchain_core.runnables.history import RunnableWithMessageHistory
 
 class ai_chat:
     def __init__(self, url="https://en.wikipedia.org/wiki/Star_Wars", language="English", place="coffe shop", ai_role="a barista", user_role="a customer", session_id="abc123"):
-        self.language
+        self.language = language
         load_dotenv()
 
         OCTOAI_API_TOKEN = os.environ["OCTOAI_API_TOKEN"]
