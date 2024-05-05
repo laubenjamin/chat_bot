@@ -18,7 +18,8 @@ from langchain_core.runnables.history import RunnableWithMessageHistory
 ###############################################################################
 
 class ai_chat:
-    def __init__(self, url, language, place="coffe shop", ai_role="a barista", user_role="a customer", session_id="abc123"):
+    def __init__(self, url, language="English", place="coffe shop", ai_role="a barista", user_role="a customer", session_id="abc123"):
+        self.language
         load_dotenv()
 
         OCTOAI_API_TOKEN = os.environ["OCTOAI_API_TOKEN"]
@@ -86,7 +87,8 @@ class ai_chat:
         )
 
         ################################################################# prompt set up
-        template="""You are an assistant for role-playing tasks. Respond in """ + language + """. \
+        template="""You are an assistant for role-playing tasks. \
+        Respond in language specified by user after the phrase \"Language: \". \
         The setting is""" + place + """, you are """ + ai_role + """ and the user is """ + user_role + """ \
         Use the following pieces of retrieved context to continue the conversation. \
         Use three sentences maximum and keep the answer concise.
@@ -130,7 +132,10 @@ class ai_chat:
     # session id example: "abc123"
     def getAIResponse(self, user_input):
         ai_response = self.conversational_rag_chain.invoke(
-            {"input": user_input},
+            {"input": user_input + "Language: " + self.language},
             config={"configurable": {"session_id": self.session_id}},
             )["answer"]
         return ai_response
+    
+    def language_update(self, language):
+        self.language = language
