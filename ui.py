@@ -36,7 +36,7 @@ class StartScreen(tk.Frame):
         self.name_var = tk.StringVar()
         name_label = tk.Label(self, text = 'What is your name?', font=('calibre',10, 'bold'))
         name_entry = tk.Entry(self, textvariable = self.name_var, font=('calibre',10,'normal'))
-        sub_btn = tk.Button(self,text = 'Sumbit', command = self.submit)
+        sub_btn = tk.Button(self,text = 'Submit', command = self.submit)
         name_label.grid(row=0,column=0)
         name_entry.grid(row=0,column=1)
         sub_btn.grid(row=2,column=1)
@@ -50,7 +50,7 @@ class ChatScreen(tk.Frame):
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
-        self.greetings = ["Ciao Ryan, piacere di conoscerti", "Certo, sarei felice di aiutarti! Cosa ti piacerebbe imparare sull'italiano?"]
+        self.greetings = ["Ciao Ryan, piacere di conoscerti!", "Certo, sarei felice di aiutarti! Cosa ti piacerebbe imparare sull'italiano?"]
         self.greeting_count = 0
         self.controller = controller
         self.starting_mic = True
@@ -70,7 +70,6 @@ class ChatScreen(tk.Frame):
         microphone_butt.grid(row=2, column=0)
 
     def record_audio(self):
-        self.response_box.text = "RECORDING"
         #self.audio = self.controller.recorder.start(5)
         #text = self.controller.ai.getAIResponse(self.audio)
         self.controller.after(5000)
@@ -93,6 +92,3 @@ class ChatScreen(tk.Frame):
         self.chosen_langauge = self.lang_dropdown.get()
         #self.controller.ai.language_update(self.lang_dropdown.get())
         pass
-
-app = GUI()
-app.mainloop()
