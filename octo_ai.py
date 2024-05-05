@@ -18,7 +18,7 @@ from langchain_core.runnables.history import RunnableWithMessageHistory
 ###############################################################################
 
 class ai_chat:
-    def __init__(self, url, place, ai_role, user_role, session_id):
+    def __init__(self, url, place, language, ai_role, user_role, session_id):
         load_dotenv()
 
         OCTOAI_API_TOKEN = os.environ["OCTOAI_API_TOKEN"]
@@ -86,7 +86,7 @@ class ai_chat:
         )
 
         ################################################################# prompt set up
-        template="""You are an assistant for role-playing tasks. \
+        template="""You are an assistant for role-playing tasks. Respond in """ + language + """. \
         The setting is""" + place + """, you are """ + ai_role + """ and the user is """ + user_role + """ \
         Use the following pieces of retrieved context to continue the conversation. \
         Use three sentences maximum and keep the answer concise.
